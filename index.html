@@ -29,7 +29,7 @@
         <nav>
           <ul>
             <li><a href="#cv">CV</a></li>
-            <li><a href="#rototics">Rototics</a></li>
+            <li><a href="#robotics">ROBOTICS</a></li>
             <li><a href="#llm">LLM</a></li>
             <li><a href="#etc">ETC</a></li>
           </ul>
@@ -37,89 +37,57 @@
       </header>
 
       <div id="main">
-        <article id="cv">
+        <article id="cv" class="archive-article">
           <h2 class="major">CV</h2>
-          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-          <p class="lead-copy">Interdisciplinary designer and software developer building interfaces, experiments, and research-oriented prototypes.</p>
-          <div class="info-grid">
-            <section class="info-card">
-              <h3>Profile</h3>
-              <p>Design systems, front-end implementation, rapid prototyping, and structured product thinking.</p>
-            </section>
-            <section class="info-card">
-              <h3>Focus</h3>
-              <p>Human-centered interaction, interface behavior, and practical AI-assisted workflows.</p>
-            </section>
-            <section class="info-card">
-              <h3>Availability</h3>
-              <p>Selective collaborations, lab-facing prototypes, and portfolio curation for future case studies.</p>
-            </section>
+          <p class="archive-intro">Computer vision paper notes arranged like a compact archive. Each entry opens a markdown-based review inside the same viewer.</p>
+          <div class="archive-meta">
+            <span>Computer Vision Archive</span>
+            <span id="cv-review-count">0 entries</span>
           </div>
-          <ul class="alt section-list">
-            <li>UI/UX systems for research and product environments.</li>
-            <li>Prototype implementation for design validation and interaction testing.</li>
-            <li>Structured documentation for experiments, reviews, and technical notes.</li>
-          </ul>
+          <div id="cv-review-list" class="review-list"></div>
         </article>
 
-        <article id="rototics">
-          <h2 class="major">Rototics</h2>
-          <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-          <p class="lead-copy">A workspace for robotics-adjacent ideas, lab tooling, and interactive system concepts.</p>
-          <div class="info-grid">
-            <section class="info-card">
-              <h3>Interface Layer</h3>
-              <p>Dashboards, control surfaces, and experiment-facing UI for observing system behavior.</p>
-            </section>
-            <section class="info-card">
-              <h3>Prototype Layer</h3>
-              <p>Fast implementation paths for testing motion, feedback loops, and operator workflows.</p>
-            </section>
-            <section class="info-card">
-              <h3>Documentation Layer</h3>
-              <p>Clear records of assumptions, limitations, and iteration history across experiments.</p>
-            </section>
+        <article id="robotics" class="archive-article">
+          <h2 class="major">ROBOTICS</h2>
+          <p class="archive-intro">Robotics papers, skeptical takeaways, and implementation-oriented notes presented in a board-like list.</p>
+          <div class="archive-meta">
+            <span>Robotics Archive</span>
+            <span id="robotics-review-count">0 entries</span>
           </div>
-          <p>Use this section for lab work, systems notes, demos, or robotics-related case studies once the final content is ready.</p>
+          <div id="robotics-review-list" class="review-list"></div>
         </article>
 
-        <article id="llm">
+        <article id="llm" class="archive-article">
           <h2 class="major">LLM</h2>
-          <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-          <p class="lead-copy">A focused section for language-model research, evaluation notes, and applied workflow experiments.</p>
-          <div class="info-grid">
-            <section class="info-card">
-              <h3>Research Scope</h3>
-              <p>Prompt design, evaluation structure, grounding, agentic workflows, and multimodal interaction.</p>
-            </section>
-            <section class="info-card">
-              <h3>Applied Notes</h3>
-              <p>RAG pipelines, tool use, reliability checks, and interfaces for evidence-aware generation.</p>
-            </section>
-            <section class="info-card">
-              <h3>Archive Direction</h3>
-              <p>Paper summaries, skeptical takeaways, and implementation notes that can later expand into full writeups.</p>
-            </section>
+          <p class="archive-intro">Language-model reviews focused on reliability, retrieval, agents, evaluation, and applied research workflows.</p>
+          <div class="archive-meta">
+            <span>LLM Archive</span>
+            <span id="llm-review-count">0 entries</span>
           </div>
-          <p>The ETC section below already includes a working review archive based on markdown dummy files.</p>
+          <div id="llm-review-list" class="review-list"></div>
         </article>
 
-        <article id="etc">
+        <article id="etc" class="archive-article">
           <h2 class="major">ETC</h2>
-          <p class="review-note">Dummy markdown files are connected below so you can verify the review list and detail view before adding real papers.</p>
-          <div id="review-list" class="review-list"></div>
+          <p class="archive-intro">Everything else that does not fit neatly into CV, robotics, or LLM. The list still behaves like the same markdown review archive.</p>
+          <div class="archive-meta">
+            <span>ETC Archive</span>
+            <span id="etc-review-count">0 entries</span>
+          </div>
+          <div id="etc-review-list" class="review-list"></div>
         </article>
 
         <article id="review">
+          <p class="review-kicker" id="review-section">ARCHIVE</p>
           <h2 class="major" id="review-title">Review</h2>
           <p class="review-page-meta" id="review-meta"></p>
           <div class="tags" id="review-tags"></div>
           <div class="review-toolbar">
-            <a href="#etc" class="button small">Back to ETC</a>
-            <a href="reviews/dummy-review-01.md" class="button small" id="review-raw-link" target="_blank" rel="noopener">Open .md</a>
+            <a href="#etc" class="button small" id="review-back-link">Back to ETC</a>
+            <a href="#" class="button small" id="review-raw-link" target="_blank" rel="noopener">Open .md</a>
           </div>
           <div class="markdown-body" id="review-content">
-            <p>Select a review from the ETC section.</p>
+            <p>Select a review from one of the archive sections.</p>
           </div>
         </article>
       </div>
