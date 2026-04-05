@@ -70,8 +70,22 @@
     return String(a && a.title ? a.title : '').localeCompare(String(b && b.title ? b.title : ''));
   }
 
+  function stripHtml(html) {
+    return String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function buildSummary(item) {
+    const explicit = String(item && item.summary ? item.summary : '').trim();
+    if (explicit) return explicit;
+
+    const plain = stripHtml(item && item.html);
+    if (!plain) return 'Markdown review entry.';
+    return plain.length > 180 ? plain.slice(0, 177).trim() + '…' : plain;
+  }
+
   reviews.forEach(function (item) {
     item.section = inferSection(item);
+    item.summary = buildSummary(item);
   });
   reviews.sort(compareReviews);
 
@@ -128,23 +142,19 @@
     }) || reviews[0] || null;
   }
 
-  function buildCardHtml(item, index, section) {
+  function buildRowHtml(item, index, section) {
     return [
-      '<section class="review-card">',
-        '<div class="review-card-header">',
+      '<a href="#review" class="board-row review-launch" data-review-id="' + escapeHtml(item.id) + '" data-review-section="' + escapeHtml(section) + '">',
+        '<div class="board-row-header">',
           '<div>',
-            '<p class="meta">' + escapeHtml(formatMeta(item)) + '</p>',
-            '<h3>' + escapeHtml(item.title) + '</h3>',
+            '<p class="board-row-meta">' + escapeHtml(formatMeta(item)) + '</p>',
+            '<h3 class="board-row-title">' + escapeHtml(item.title) + '</h3>',
+            '<div class="tags">' + renderTags(item.tags) + '</div>',
           '</div>',
-          '<div class="review-index">' + escapeHtml(sectionLabel(section)) + ' · ' + String(index + 1).padStart(2, '0') + '</div>',
+          '<div class="board-row-index">' + escapeHtml(sectionLabel(section)) + ' · ' + String(index + 1).padStart(2, '0') + '</div>',
         '</div>',
-        '<p class="review-summary">' + escapeHtml(item.summary || 'Markdown review entry.') + '</p>',
-        '<div class="tags">' + renderTags(item.tags) + '</div>',
-        '<div class="review-actions">',
-          '<a href="#review" class="button small review-launch" data-review-id="' + escapeHtml(item.id) + '" data-review-section="' + escapeHtml(section) + '">Open review</a>',
-          '<a href="' + escapeHtml(item.filePath) + '" class="button small" target="_blank" rel="noopener">Open .md</a>',
-        '</div>',
-      '</section>'
+        '<p class="board-row-summary">' + escapeHtml(item.summary || 'Markdown review entry.') + '</p>',
+      '</a>'
     ].join('');
   }
 
@@ -171,7 +181,7 @@
     }
 
     container.innerHTML = items.map(function (item, index) {
-      return buildCardHtml(item, index, key);
+      return buildRowHtml(item, index, key);
     }).join('');
   }
 
@@ -224,7 +234,7 @@
       if (location.hash !== '#review') {
         location.hash = '#review';
       }
-    });
+    }, true);
 
     window.addEventListener('hashchange', function () {
       if (location.hash === '#review') {

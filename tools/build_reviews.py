@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import re
 import yaml
 import mistune
 
@@ -36,6 +37,21 @@ def infer_section(meta: dict, path: Path) -> str:
     return 'etc'
 
 
+def strip_html(value: str) -> str:
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', value or '')).strip()
+
+
+def build_summary(meta: dict, html: str) -> str:
+    explicit = str(meta.get('summary', '')).strip()
+    if explicit:
+        return explicit
+
+    plain = strip_html(html)
+    if not plain:
+        return ''
+    return plain[:177].rstrip() + '…' if len(plain) > 180 else plain
+
+
 items = []
 for path in sorted(REVIEWS_DIR.rglob('*.md')):
     raw = path.read_text(encoding='utf-8')
@@ -50,7 +66,7 @@ for path in sorted(REVIEWS_DIR.rglob('*.md')):
         'venue': meta.get('venue', ''),
         'year': meta.get('year', ''),
         'date': str(meta.get('date', '')),
-        'summary': meta.get('summary', ''),
+        'summary': build_summary(meta, html),
         'tags': meta.get('tags', []) or [],
         'filePath': relative_path,
         'html': html,

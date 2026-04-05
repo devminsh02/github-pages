@@ -10,6 +10,13 @@ body:not(.is-article-visible) #header {
   margin: 0 auto;
 }
 
+body.is-article-visible #main article,
+#main article.review-article,
+#main article.archive-article {
+  background-color: rgba(13, 15, 19, 0.97);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.32);
+}
+
 .site-links {
   margin: 0;
   font-size: 0.75rem;
@@ -35,8 +42,8 @@ body:not(.is-article-visible) #header {
 .archive-meta,
 .review-page-meta,
 .review-kicker,
-.review-card .meta,
-.review-card .review-index {
+.board-row-meta,
+.board-row-index {
   font-size: 0.72rem;
   letter-spacing: 0.16rem;
   text-transform: uppercase;
@@ -54,97 +61,76 @@ body:not(.is-article-visible) #header {
   text-align: right;
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
+.archive-board,
+.review-sheet,
+.empty-state {
+  border: solid 1px rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
 }
 
-.info-card,
-.review-card,
-.standalone-card {
-  border: solid 1px rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.04);
+.archive-board,
+.review-sheet {
+  overflow: hidden;
 }
 
-.info-card {
-  padding: 1.25rem 1.35rem;
-}
-
-.info-card h3 {
-  margin: 0 0 0.65rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.18rem;
-  text-transform: uppercase;
-}
-
-.lead-copy {
-  margin-bottom: 1rem;
-}
-
-.section-list {
-  margin: 0;
-}
-
-.section-list li {
-  margin-bottom: 0.55rem;
-}
-
-.review-note {
-  margin-bottom: 1.5rem;
-  opacity: 0.82;
+.review-sheet {
+  padding: 1.6rem;
 }
 
 .review-list {
-  display: grid;
-  gap: 1rem;
+  display: block;
 }
 
-.review-card {
-  padding: 1.45rem;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+.board-row {
+  display: block;
+  padding: 1.35rem 1.5rem;
+  text-decoration: none;
+  border-bottom: 0 !important;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.review-card:hover {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 255, 255, 0.28);
+.board-row:last-child {
+  box-shadow: none;
 }
 
-.review-card-header {
+.board-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.board-row-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.review-card h3 {
-  margin: 0.35rem 0 0.75rem;
-  font-size: 1.05rem;
+.board-row-meta,
+.review-page-meta,
+.review-kicker,
+.board-row-index {
+  margin: 0;
+  opacity: 0.7;
+}
+
+.board-row-title {
+  margin: 0.4rem 0 0.55rem;
+  font-size: 1.02rem;
   letter-spacing: 0.08rem;
   text-transform: none;
   line-height: 1.45;
 }
 
-.review-card .meta,
-.review-page-meta,
-.review-kicker {
-  margin: 0;
-  opacity: 0.72;
-}
-
-.review-card .review-index {
-  opacity: 0.55;
+.board-row-index {
   white-space: nowrap;
   text-align: right;
+  opacity: 0.55;
 }
 
-.review-card p:last-child {
-  margin-bottom: 0;
-}
-
-.review-card .review-summary {
-  margin-bottom: 0;
+.board-row-summary {
+  margin: 0.75rem 0 0;
+  opacity: 0.84;
 }
 
 .tags {
@@ -152,6 +138,10 @@ body:not(.is-article-visible) #header {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.board-row .tags {
+  margin-top: 0.35rem;
 }
 
 .tag {
@@ -170,15 +160,10 @@ body:not(.is-article-visible) #header {
   margin-bottom: 0.5rem;
 }
 
-.review-actions,
 .review-toolbar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.1rem;
-}
-
-.review-toolbar {
   margin: 1.1rem 0 1.8rem;
 }
 
@@ -235,7 +220,7 @@ body:not(.is-article-visible) #header {
   overflow-x: auto;
   padding: 1rem;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.28);
   border: solid 1px rgba(255, 255, 255, 0.12);
 }
 
@@ -257,8 +242,6 @@ body:not(.is-article-visible) #header {
 
 .empty-state {
   padding: 1.25rem;
-  border: solid 1px rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 .standalone-page {
@@ -274,6 +257,8 @@ body:not(.is-article-visible) #header {
   padding: 2.5rem;
   position: relative;
   z-index: 2;
+  border: solid 1px rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .standalone-card h1 {
@@ -291,16 +276,20 @@ body:not(.is-article-visible) #header {
   }
 
   .archive-meta,
-  .review-card-header {
+  .board-row-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .review-card .review-index {
+  .board-row-index {
     text-align: left;
   }
 
-  .review-card,
+  .board-row {
+    padding: 1.15rem 1.2rem;
+  }
+
+  .review-sheet,
   .standalone-card {
     padding: 1.2rem;
   }

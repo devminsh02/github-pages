@@ -39,55 +39,65 @@
       <div id="main">
         <article id="cv" class="archive-article">
           <h2 class="major">CV</h2>
-          <p class="archive-intro">Computer vision paper notes arranged like a compact archive. Each entry opens a markdown-based review inside the same viewer.</p>
+          <p class="archive-intro">Computer vision paper notes arranged as a compact archive. Click a title row to open the full markdown review.</p>
           <div class="archive-meta">
             <span>Computer Vision Archive</span>
             <span id="cv-review-count">0 entries</span>
           </div>
-          <div id="cv-review-list" class="review-list"></div>
+          <div class="archive-board">
+            <div id="cv-review-list" class="review-list board-list"></div>
+          </div>
         </article>
 
         <article id="robotics" class="archive-article">
           <h2 class="major">ROBOTICS</h2>
-          <p class="archive-intro">Robotics papers, skeptical takeaways, and implementation-oriented notes presented in a board-like list.</p>
+          <p class="archive-intro">Robotics papers, skeptical takeaways, and implementation-oriented notes. Click a title row to open the full markdown review.</p>
           <div class="archive-meta">
             <span>Robotics Archive</span>
             <span id="robotics-review-count">0 entries</span>
           </div>
-          <div id="robotics-review-list" class="review-list"></div>
+          <div class="archive-board">
+            <div id="robotics-review-list" class="review-list board-list"></div>
+          </div>
         </article>
 
         <article id="llm" class="archive-article">
           <h2 class="major">LLM</h2>
-          <p class="archive-intro">Language-model reviews focused on reliability, retrieval, agents, evaluation, and applied research workflows.</p>
+          <p class="archive-intro">Language-model reviews focused on reliability, retrieval, agents, evaluation, and applied workflows. Click a title row to open the full markdown review.</p>
           <div class="archive-meta">
             <span>LLM Archive</span>
             <span id="llm-review-count">0 entries</span>
           </div>
-          <div id="llm-review-list" class="review-list"></div>
+          <div class="archive-board">
+            <div id="llm-review-list" class="review-list board-list"></div>
+          </div>
         </article>
 
         <article id="etc" class="archive-article">
           <h2 class="major">ETC</h2>
-          <p class="archive-intro">Everything else that does not fit neatly into CV, robotics, or LLM. The list still behaves like the same markdown review archive.</p>
+          <p class="archive-intro">Everything else that does not fit neatly into CV, robotics, or LLM. Click a title row to open the full markdown review.</p>
           <div class="archive-meta">
             <span>ETC Archive</span>
             <span id="etc-review-count">0 entries</span>
           </div>
-          <div id="etc-review-list" class="review-list"></div>
+          <div class="archive-board">
+            <div id="etc-review-list" class="review-list board-list"></div>
+          </div>
         </article>
 
-        <article id="review">
-          <p class="review-kicker" id="review-section">ARCHIVE</p>
-          <h2 class="major" id="review-title">Review</h2>
-          <p class="review-page-meta" id="review-meta"></p>
-          <div class="tags" id="review-tags"></div>
-          <div class="review-toolbar">
-            <a href="#etc" class="button small" id="review-back-link">Back to ETC</a>
-            <a href="#" class="button small" id="review-raw-link" target="_blank" rel="noopener">Open .md</a>
-          </div>
-          <div class="markdown-body" id="review-content">
-            <p>Select a review from one of the archive sections.</p>
+        <article id="review" class="review-article">
+          <div class="review-sheet">
+            <p class="review-kicker" id="review-section">ARCHIVE</p>
+            <h2 class="major" id="review-title">Review</h2>
+            <p class="review-page-meta" id="review-meta"></p>
+            <div class="tags" id="review-tags"></div>
+            <div class="review-toolbar">
+              <a href="#etc" class="button small" id="review-back-link">Back to ETC</a>
+              <a href="#" class="button small" id="review-raw-link" target="_blank" rel="noopener">Open .md</a>
+            </div>
+            <div class="markdown-body" id="review-content">
+              <p>Select a review from one of the archive sections.</p>
+            </div>
           </div>
         </article>
       </div>
